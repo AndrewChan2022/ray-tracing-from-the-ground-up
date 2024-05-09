@@ -1,4 +1,4 @@
-# build
+# build for windows mingw
 
 changes:
 
