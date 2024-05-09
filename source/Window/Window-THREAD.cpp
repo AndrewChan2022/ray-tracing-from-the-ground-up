@@ -1,4 +1,5 @@
 #include "Window-THREAD.hpp"
+#include <cstdio>
 
 Window_THREAD::Window_THREAD(int width, int height) :
     Window(width, height){

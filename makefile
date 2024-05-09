@@ -1,8 +1,12 @@
 APP = RTX.out
 CC = g++
 FLAGS =	-ansi -pedantic
-LINKS = -lSDL2 -lpthread -pthread -std=c++11
+# LINKS = -lSDL2 -lpthread -pthread -std=c++11
+LINKS = -lSDL2 -lpthread -pthread -std=c++11 -lmingw32 -lSDL2main
+LIBPATH = -L"external/SDL2/lib"
+INCLUDES = -I"external/SDL2/include"
 RM = rm -rf
+
 
 SOURCE = 	$(wildcard ./source/BRDF/*.cpp) \
 			$(wildcard ./source/Cameras/*.cpp) \
@@ -22,7 +26,7 @@ all: ./build/$(APP)
 
 ./build/$(APP): $(OBJECTS)
 	@ echo 'Building binary $@'
-	$(CC) $^ $(FLAGS) $(LINKS) -o $@
+	$(CC) $^ $(LIBPATH) $(INCLUDES) $(FLAGS) $(LINKS) -o $@
 
 clean:
 	@ $(RM) ./build/$(APP) 

@@ -1,3 +1,38 @@
+# build
+
+changes:
+
+    1. Window/Window.hpp add define before include
+        #define SDL_MAIN_HANDLED
+        #include <SDL2/SDL.h>
+    2. Window/Window-THREAD.cpp add include
+        #include <cstdio>
+    3. download SDL mingw version to external/SDL2
+        https://www.matsson.com/prog/sdl2-mingw-w64-tutorial.php
+        download SDL2-devel-2.30.3-mingw.zip
+        copy x86_64-w64-mingw32 to external/SDL2
+    4. make file
+        LINKS = -lSDL2 -lpthread -pthread -std=c++11
+        =>
+        LINKS = -lSDL2 -lpthread -pthread -std=c++11 -lmingw32 -lSDL2main
+        LIBPATH = -L"external/SDL2/lib"
+        INCLUDES = -I"external/SDL2/include"
+
+
+        $(CC) $^ $(FLAGS) $(LINKS) -o $@
+        =>
+        $(CC) $^ $(LIBPATH) $(INCLUDES) $(FLAGS) $(LINKS) -o $@
+
+build:
+
+    1. mingw terminal: gitbash or other mingw terminal
+    2. make -j12
+    3. cd build
+    4. ./RTX.out
+    
+
+-----------------------------
+
 # Ray-Tracing-from-the-Ground-Up
 software from the book Ray Tracing from the Ground Up by Kevin Suffern
 
