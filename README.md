@@ -29,6 +29,7 @@ build:
     2. make -j12
     3. cd build
     4. ./RTX.out
+    5. change World.cpp include file to change different scene  #include "../build/XXX.hpp"
     
 
 -----------------------------
